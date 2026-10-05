@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEX // DEV PORTFOLIO ⚡ (Gen Z Edition)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800;900&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --acid-green: #CCFF00;
+            --vivid-pink: #FF007F;
+            --electric-blue: #00E5FF;
+            --bright-yellow: #FFEA00;
+            --brutal-black: #000000;
+        }
+
+        body {
+            font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--acid-green);
+            background-image: radial-gradient(#000000 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+
+        /* Neo-Brutalist Heavy Border & Hard Offset Shadows */
+        .brutal-border {
+            border: 4px solid var(--brutal-black);
+        }
+
+        .brutal-shadow {
+            box-shadow: 6px 6px 0px 0px var(--brutal-black);
+        }
+
+        .brutal-shadow-lg {
+            box-shadow: 10px 10px 0px 0px var(--brutal-black);
+        }
+
+        .brutal-shadow-sm {
+            box-shadow: 4px 4px 0px 0px var(--brutal-black);
+        }
+
+        /* Q-Bounce Hover for Unlocked Buttons */
+        .unlocked-btn {
+            transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .unlocked-btn:hover {
+            transform: translate(-5px, -5px) rotate(-2deg);
+            box-shadow: 11px 11px 0px 0px var(--brutal-black);
+        }
+
+        .unlocked-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px var(--brutal-black);
+        }
+
+        /* Shake animation for locked buttons */
+        @keyframes brutal-shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            20% { transform: translateX(-4px) rotate(-2deg); }
+            40% { transform: translateX(4px) rotate(2deg); }
+            60% { transform: translateX(-3px) rotate(-1deg); }
+            80% { transform: translateX(3px) rotate(1deg); }
+        }
+
+        .locked-btn {
+            transition: transform 0.15s ease, background-color 0.2s ease;
+        }
+
+        .locked-btn:hover {
+            animation: brutal-shake 0.35s ease-in-out;
+            background-color: #E2E8F0;
+        }
+
+        /* Continuous sticker floating effect */
+        @keyframes sticker-float {
+            0%, 100% { transform: translateY(0px) rotate(6deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        @keyframes sticker-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .floating-sticker {
+            animation: sticker-float 3.5s ease-in-out infinite;
+        }
+
+        .spinning-badge {
+            animation: sticker-spin 12s linear infinite;
+        }
+
+        /* Toast animation */
+        @keyframes toast-slide-up {
+            0% { transform: translateY(120%) scale(0.8); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .toast-active {
+            animation: toast-slide-up 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-black flex flex-col justify-between selection:bg-[#FF007F] selection:text-white pb-12">
+
+    <header class="bg-[#FF007F] text-white brutal-border border-t-0 border-x-0 py-2.5 overflow-hidden font-black uppercase text-sm tracking-wider">
+        <div class="whitespace-nowrap flex gap-6 animate-none md:animate-pulse">
+            <span>⚡ MAIN CHARACTER ENERGY 💅</span>
+            <span>✦ NO CAP CODE ONLY ✦</span>
+            <span>🔥 WE COOKING WEBSITES NOT BUGS 🧑‍🍳</span>
+            <span>✦ 100% REAL VIBES ✦</span>
+            <span>⚡ MAIN CHARACTER ENERGY 💅</span>
+            <span>✦ NO CAP CODE ONLY ✦</span>
+            <span>🔥 WE COOKING WEBSITES NOT BUGS 🧑‍🍳</span>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pt-10 max-w-6xl flex-grow">
+        
+        <!-- PROFILE & PROGRESS HERO CARD -->
+        <section class="bg-white brutal-border brutal-shadow-lg rounded-3xl p-6 sm:p-10 mb-10 relative overflow-visible">
+            
+            <!-- Floating Decorative Stickers -->
+            <div class="absolute -top-6 -right-3 bg-[#00E5FF] text-black font-black text-xs sm:text-sm px-4 py-2 brutal-border rounded-xl brutal-shadow-sm floating-sticker hidden sm:block z-20">
+                REAL VIBES ONLY ⚡
+            </div>
+            <div class="absolute -bottom-5 -left-3 bg-[#FFEA00] text-black font-black text-xs sm:text-sm px-4 py-2 brutal-border rounded-xl brutal-shadow-sm hidden sm:block z-20">
+                NO CAP 🧢
+            </div>
+
+            <!-- Profile Info Header -->
+            <div class="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                
+                <!-- Avatar with Hard Shadow -->
+                <div class="relative group">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl bg-[#FF007F] brutal-border brutal-shadow overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" 
+                             alt="ALEX Avatar" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <!-- Online Tag -->
+                    <span class="absolute -bottom-2 -right-2 bg-[#CCFF00] text-black font-black text-xs px-3 py-1 brutal-border rounded-full brutal-shadow-sm">
+                        ONLINE 🟢
+                    </span>
+                </div>
+
+                <!-- User Text Info -->
+                <div class="flex-1 space-y-3">
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3">
+                        <h1 class="text-4xl sm:text-6xl font-black uppercase tracking-tight">
+                            ALEX CHEN
+                        </h1>
+                        <span class="bg-[#00E5FF] text-black text-xs font-black px-3 py-1 brutal-border rounded-lg uppercase">
+                            PROG_STUDENT 👨‍💻
+                        </span>
+                    </div>
+
+                    <p class="text-black font-extrabold text-base sm:text-lg">
+                        網頁設計狂魔 🚀 <span class="bg-[#FFEA00] px-2 py-0.5 brutal-border rounded-md">@alex_web_dev</span>
+                    </p>
+
+                    <!-- Status Tags -->
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start pt-1">
+                        <span class="bg-[#FF007F] text-white text-xs font-black px-3 py-1.5 brutal-border rounded-xl">
+                            MAIN CHARACTER💅
+                        </span>
+                        <span class="bg-[#CCFF00] text-black text-xs font-black px-3 py-1.5 brutal-border rounded-xl">
+                            100% VIBE CHECKED ⚡
+                        </span>
+                        <span class="bg-black text-white text-xs font-black px-3 py-1.5 rounded-xl">
+                            WEEKLY QUESTS 🎮
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL PROGRESS BAR -->
+            <div class="mt-8 pt-6 border-t-4 border-black">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+                    <span class="font-black text-sm uppercase tracking-wider flex items-center gap-2">
+                        <span>QUEST PROGRESS</span>
+                        <span class="bg-black text-white text-[10px] px-2 py-0.5 rounded-md">LEVEL 2/16</span>
+                    </span>
+                    <span class="font-black text-xs sm:text-sm bg-[#CCFF00] text-black px-3 py-1 brutal-border rounded-lg">
+                        12.5% COMPLETED ⚡
+                    </span>
+                </div>
+                <!-- Progress Container -->
+                <div class="w-full bg-gray-100 h-8 brutal-border rounded-2xl overflow-hidden p-1">
+                    <div class="bg-[#FF007F] h-full rounded-xl brutal-border transition-all duration-500 relative flex items-center justify-end pr-2" style="width: 12.5%;">
+                        <span class="text-xs font-black text-white">🔥</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16 ASSIGNMENTS GRID SECTION -->
+        <section>
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight flex items-center gap-2">
+                    SELECT LEVEL 🎮
+                </h2>
+                <span class="bg-black text-white font-black text-xs px-3 py-1.5 rounded-full">
+                    16 QUESTS TOTAL
+                </span>
+            </div>
+
+            <!-- GRID CONTAINER -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <!-- BUTTON 1: UNLOCKED (Week 1) -->
+                <a href="w1/index.html" class="unlocked-btn bg-[#FFEA00] p-6 rounded-3xl brutal-border brutal-shadow flex flex-col justify-between min-h-[200px] relative group">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-800">LEVEL 01</span>
+                        <span class="bg-black text-[#CCFF00] text-[10px] font-black px-2.5 py-1 rounded-md uppercase">
+                            UNLOCKED 🔓
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 group-hover:text-[#FF007F] transition-colors leading-snug">
+                            Week 1<br>數位名片
+                        </h3>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-black flex items-center justify-between">
+                        <span class="bg-white text-black text-xs font-black px-2.5 py-1 brutal-border rounded-lg">
+                            CARD VIBE 💳
+                        </span>
+                        <span class="font-black text-xl">→</span>
+                    </div>
+                </a>
+
+                <!-- BUTTON 2: UNLOCKED (Week 2) -->
+                <a href="w2/index.html" class="unlocked-btn bg-[#FF007F] text-white p-6 rounded-3xl brutal-border brutal-shadow flex flex-col justify-between min-h-[200px] relative group">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-pink-200">LEVEL 02</span>
+                        <span class="bg-black text-[#00E5FF] text-[10px] font-black px-2.5 py-1 rounded-md uppercase">
+                            UNLOCKED 🔓
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 group-hover:text-[#CCFF00] transition-colors leading-snug">
+                            Week 2<br>今天吃甚麼?
+                        </h3>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-black flex items-center justify-between">
+                        <span class="bg-black text-white text-xs font-black px-2.5 py-1 rounded-lg">
+                            FOOD CHOICE 🍕
+                        </span>
+                        <span class="font-black text-xl">→</span>
+                    </div>
+                </a>
+
+                <!-- BUTTON 3: LOCKED -->
+                <div onclick="showLockedAlert('Week 3')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 03</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 3</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 4: LOCKED -->
+                <div onclick="showLockedAlert('Week 4')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 04</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 4</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 5: LOCKED -->
+                <div onclick="showLockedAlert('Week 5')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 05</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 5</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 6: LOCKED -->
+                <div onclick="showLockedAlert('Week 6')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 06</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 6</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 7: LOCKED -->
+                <div onclick="showLockedAlert('Week 7')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 07</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 7</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 8: LOCKED (MIDTERM) -->
+                <div onclick="showLockedAlert('Week 8 (期中專題)')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 08</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 8</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">期中成果發表 ⚡</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 9: LOCKED -->
+                <div onclick="showLockedAlert('Week 9')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 09</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 9</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 10: LOCKED -->
+                <div onclick="showLockedAlert('Week 10')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 10</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 10</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 11: LOCKED -->
+                <div onclick="showLockedAlert('Week 11')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 11</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 11</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 12: LOCKED -->
+                <div onclick="showLockedAlert('Week 12')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 12</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 12</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 13: LOCKED -->
+                <div onclick="showLockedAlert('Week 13')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 13</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 13</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 14: LOCKED -->
+                <div onclick="showLockedAlert('Week 14')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 14</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 14</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 15: LOCKED -->
+                <div onclick="showLockedAlert('Week 15')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 15</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 15</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">未解鎖任務</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">LOCKED 🔒</span>
+                        <span class="text-lg">🔑</span>
+                    </div>
+                </div>
+
+                <!-- BUTTON 16: LOCKED (FINAL QUEST) -->
+                <div onclick="showLockedAlert('Week 16 (期末大專題)')" class="locked-btn bg-gray-200 text-gray-500 p-6 rounded-3xl brutal-border brutal-shadow-sm flex flex-col justify-between min-h-[200px] cursor-pointer select-none">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xs font-black uppercase text-gray-400">LEVEL 16</span>
+                        <span class="bg-gray-400 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase">🔒 LOCKED</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mt-2 text-gray-700 leading-snug">Week 16</h3>
+                        <p class="text-xs font-bold text-gray-400 mt-1">👑 最終期末大關卡</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-4 border-gray-300 flex items-center justify-between">
+                        <span class="bg-gray-300 text-gray-700 text-xs font-extrabold px-2.5 py-1 rounded-lg">FINAL BOSS 🏆</span>
+                        <span class="text-lg">👑</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- GEN Z TOAST NOTIFICATION MODAL -->
+    <div id="locked-toast" class="fixed bottom-6 right-6 left-6 md:left-auto md:w-96 bg-[#FF007F] text-white p-5 rounded-3xl brutal-border brutal-shadow-lg hidden z-50">
+        <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <span class="text-4xl">🚫</span>
+                <div>
+                    <h4 id="toast-title" class="font-black text-xl uppercase tracking-tight leading-tight">BRO, LEVEL LOCKED! 🔒</h4>
+                    <p id="toast-body" class="text-xs font-extrabold text-pink-100 mt-1">Finish earlier weeks first before skipping levels! 💀</p>
+                </div>
+            </div>
+            <button onclick="closeToast()" class="bg-black text-white hover:bg-white hover:text-black font-black w-8 h-8 rounded-xl brutal-border flex items-center justify-center transition-colors">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 bg-black text-white py-6 border-t-4 border-black">
+        <div class="container mx-auto px-4 max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-extrabold">
+            <div class="flex items-center gap-2">
+                <span class="bg-[#CCFF00] text-black px-2 py-0.5 rounded font-black">2026</span>
+                <span>WEB PROGRAMMING PORTFOLIO HUB</span>
+            </div>
+            <p class="text-gray-400">
+                MADE WITH <span class="text-[#FF007F]">⚡ NO CAP</span> | ALL RIGHTS RESERVED
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let toastTimer;
+
+        const genZMemes = [
+            "Bro is trying to speedrun the semester?! Finish earlier weeks first! 💀",
+            "Hold up! You haven't cooked the previous quests yet! 🧑‍‍🍳",
+            "Level locked! You need more EXP to open this level 🔑",
+            "No cap, this quest is still under construction 🛠️",
+            "Chill bro! Focus on Week 1 & 2 first! 💅"
+        ];
+
+        function showLockedAlert(weekName) {
+            const toast = document.getElementById('locked-toast');
+            const toastTitle = document.getElementById('toast-title');
+            const toastBody = document.getElementById('toast-body');
+
+            const randomMeme = genZMemes[Math.floor(Math.random() * genZMemes.length)];
+
+            toastTitle.innerText = `${weekName} LOCKED! 🔒`;
+            toastBody.innerText = randomMeme;
+
+            toast.classList.remove('hidden');
+            toast.classList.add('toast-active');
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                closeToast();
+            }, 3200);
+        }
+
+        function closeToast() {
+            const toast = document.getElementById('locked-toast');
+            toast.classList.add('hidden');
+            toast.classList.remove('toast-active');
+        }
+    </script>
+</body>
+</html>
